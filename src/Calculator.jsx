@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     padding: "5px",
     fontWeight: "bolder",
-    fontFamily: "cursive",
+    fontFamily: "balsamiq sans",
     width: "70%",
     textAlign: "center",
     background: theme.palette.warning.light,
