@@ -322,7 +322,7 @@ const Calculator = () => {
         </Grid>
       </Paper>
       <footer style={{ textAlign: "center", margin: "60px 0px 60px 0px" }}>
-        <div
+        <span
           style={{ cursor: "pointer" }}
           onClick={() =>
             window.open(
@@ -399,7 +399,7 @@ const Calculator = () => {
             </svg>
             {/* </button> */}
           </Tooltip>
-        </div>
+        </span>
       </footer>
     </Fragment>
   );
