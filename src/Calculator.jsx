@@ -42,9 +42,9 @@ const useStyles = makeStyles((theme) => ({
     // left: "50%",
     // transform: "translate(-50%, -50%)",
     margin: "50px auto",
-    width: "80%",
+    width: "85%",
     maxWidth: "329px",
-    "@media(min-width:600px)": {
+    "@media(min-width: 600px)": {
       minWidth: "330px",
       maxWidth: "450px",
       width: "50%",
@@ -56,6 +56,9 @@ const useStyles = makeStyles((theme) => ({
   gridItem: {
     // margin: "auto",
     textAlign: "center",
+    "@media(max-width: 349px)":{
+      width: '50%',
+    }
   },
   button: {
     padding: "5px",
@@ -98,7 +101,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   spanButtons: {
-    padding: "10px",
+    padding: "0px",
+    "@media(min-width: 550px)": {
+      padding: "8px",
+    },
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -119,24 +125,24 @@ const useToolTipStyles = makeStyles((theme) => ({
 }));
 
 const Calculator = () => {
-  const [result, setResult] = useState('0');
-  const [disabled, setDisabled] = useState(false)
+  const [result, setResult] = useState("0");
+  const [disabled, setDisabled] = useState(false);
 
   const operators = { "+": "", "-": "", "*": "", "/": "" };
-  
+
   const valueChangedHandler = (oldValue, input) => {
     let newValue = oldValue;
-    const previousInput = oldValue.charAt( oldValue.length - 1 )
-    const inputBeforePreviousInput = oldValue.charAt( oldValue.length - 2)
-    if( newValue === 'Infinity' || newValue === 'NaN'){
-      newValue = input
-      setDisabled(false)
-    }else if (input === "0" && oldValue === "0") {
+    const previousInput = oldValue.charAt(oldValue.length - 1);
+    const inputBeforePreviousInput = oldValue.charAt(oldValue.length - 2);
+    if (newValue === "Infinity" || newValue === "NaN") {
+      newValue = input;
+      setDisabled(false);
+    } else if (input === "0" && oldValue === "0") {
       newValue = "0";
     } else if (oldValue === "0") {
       newValue = input;
-    } else if( previousInput === '0' && inputBeforePreviousInput in operators) {
-      newValue = newValue.slice(0, -1) + input
+    } else if (previousInput === "0" && inputBeforePreviousInput in operators) {
+      newValue = newValue.slice(0, -1) + input;
     } else {
       newValue += input;
     }
@@ -156,23 +162,22 @@ const Calculator = () => {
   };
 
   const evaluate = (result) => {
-
-    let lastInput = ( result.length > 1 ) ? result.charAt( result.length - 1 ) : null
-    if( lastInput in operators){
-      result = result.slice(0, -1)
+    let lastInput = result.length > 1 ? result.charAt(result.length - 1) : null;
+    if (lastInput in operators) {
+      result = result.slice(0, -1);
     }
     let output = eval(result).toString();
-    if( output === 'Infinity' || output === 'NaN') {
-      console.log('setting disabled to true')
-      setDisabled(true)
+    if (output === "Infinity" || output === "NaN") {
+      console.log("setting disabled to true");
+      setDisabled(true);
     }
     setResult(output);
   };
 
   const classes = useStyles();
-  const tooltipClasses = useToolTipStyles()
+  const tooltipClasses = useToolTipStyles();
 
-  const buttons = '789456123'.split('').map((button) => (
+  const buttons = "789456123".split("").map((button) => (
     <Grid key={button} className={classes.gridItem} item xs={4}>
       <Button
         className={classes.button}
@@ -275,7 +280,7 @@ const Calculator = () => {
           {operatorsAndFunctions}
           <Grid className={classes.gridItem} item xs={4}>
             <Tooltip classes={tooltipClasses} title="Clear All" arrow>
-              <span className = { classes.spanButtons }>
+              <span className={classes.spanButtons}>
                 <Button
                   className={classes.functionButtons}
                   onClick={() => {
@@ -294,7 +299,7 @@ const Calculator = () => {
               title={disabled ? "Press AC or a number" : "Clear last entry"}
               arrow
             >
-              <span className = { classes.spanButtons }  >
+              <span className={classes.spanButtons}>
                 <Button
                   disabled={disabled}
                   className={classes.functionButtons}
@@ -313,4 +318,4 @@ const Calculator = () => {
   );
 };
 export default Calculator;
-//trying again
+//Changing repo..
