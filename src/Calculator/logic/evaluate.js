@@ -8,8 +8,8 @@ const evaluate = (result) => {
   }
   let output = eval(result).toString();
   if (output === "Infinity" || output === "NaN") {
-    console.log("setting disabled to true");
     disabled = true;
+    output = (output === 'NaN' ? 'Indeterminate' : output)
   }
   const values = [ output, disabled ];
   return values;
