@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/dummy-calculator/static/js/main.b3dc4eb5.chunk.js",
-    "main.js.map": "/dummy-calculator/static/js/main.b3dc4eb5.chunk.js.map",
+    "main.js": "/dummy-calculator/static/js/main.91479593.chunk.js",
+    "main.js.map": "/dummy-calculator/static/js/main.91479593.chunk.js.map",
     "runtime-main.js": "/dummy-calculator/static/js/runtime-main.a724950e.js",
     "runtime-main.js.map": "/dummy-calculator/static/js/runtime-main.a724950e.js.map",
-    "static/js/2.bbfb6c57.chunk.js": "/dummy-calculator/static/js/2.bbfb6c57.chunk.js",
-    "static/js/2.bbfb6c57.chunk.js.map": "/dummy-calculator/static/js/2.bbfb6c57.chunk.js.map",
+    "static/js/2.2c916088.chunk.js": "/dummy-calculator/static/js/2.2c916088.chunk.js",
+    "static/js/2.2c916088.chunk.js.map": "/dummy-calculator/static/js/2.2c916088.chunk.js.map",
     "index.html": "/dummy-calculator/index.html",
-    "precache-manifest.e2722eaeea2faa51d4e201cba48fa512.js": "/dummy-calculator/precache-manifest.e2722eaeea2faa51d4e201cba48fa512.js",
+    "precache-manifest.1067084e6d53a0ce52f0801c6d488215.js": "/dummy-calculator/precache-manifest.1067084e6d53a0ce52f0801c6d488215.js",
     "service-worker.js": "/dummy-calculator/service-worker.js",
-    "static/js/2.bbfb6c57.chunk.js.LICENSE.txt": "/dummy-calculator/static/js/2.bbfb6c57.chunk.js.LICENSE.txt"
+    "static/js/2.2c916088.chunk.js.LICENSE.txt": "/dummy-calculator/static/js/2.2c916088.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.a724950e.js",
-    "static/js/2.bbfb6c57.chunk.js",
-    "static/js/main.b3dc4eb5.chunk.js"
+    "static/js/2.2c916088.chunk.js",
+    "static/js/main.91479593.chunk.js"
   ]
 }
