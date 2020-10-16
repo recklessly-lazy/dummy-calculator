@@ -4,7 +4,7 @@ import { useStyles }  from '../styles/styles'
 
 const NumberButtons = ( props ) => {
     const classes = useStyles()
-    console.log( props )
+    // console.log( props )
     const buttons = "7894561230".split("").map((button) =>
       button === "0" ? (
         <Grid key={button} className={classes.gridItem} item xs={4}>

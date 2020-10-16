@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, memo, useCallback, useEffect, useState } from "react";
 import { Button, Grid, Paper, Tooltip } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import { useStyles, useToolTipStyles } from "../styles/styles";
@@ -11,9 +11,34 @@ import OperatorButtons from "../Components/OperatorButtons";
 import Display from "../Components/Display";
 import ToolBar from "../Components/Toolbar";
 
-const Calculator = () => {
+const numberKeys = "1234567890".split("");
+const operatorKeys = "+-*/=";
+
+const Calculator = memo(() => {
+
   const [result, setResult] = useState("0");
   const [disabled, setDisabled] = useState(false);
+  
+  const handleKeyDown = useCallback((event) => {
+    const input = event.key;
+    if (numberKeys.includes(input)) {
+      console.log("Number pressed: ", input);
+      valueChangedHandler(result, input);
+    } else if (operatorKeys.includes(input)) {
+      operationsHandler(result, input)
+      console.log("Operation: ", input);
+    } else if (input === 'Enter') {
+      evaluate(result)
+    }
+  },[result]) 
+  useEffect(() => {
+    console.log("Mounted the App!");
+    window.addEventListener("keydown", handleKeyDown);
+    return (() => {
+      console.log('Removed !')
+      window.removeEventListener("keydown", handleKeyDown);
+    })
+  }, [result, handleKeyDown]);
 
   const valueChangedHandler = (oldValue, input) => {
     const [newResult, disabled] = inputHandling(oldValue, input);
@@ -100,6 +125,6 @@ const Calculator = () => {
       </footer>
     </Fragment>
   );
-};
+});
 export default Calculator;
 //Changing repo..

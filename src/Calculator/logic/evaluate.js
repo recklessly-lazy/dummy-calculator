@@ -2,7 +2,8 @@ const operators = { "+": "", "-": "", "*": "", "/": "" };
 
 const evaluate = (result) => {
   let disabled;
-  let lastInput = result.length > 1 ? result.charAt(result.length - 1) : null;
+  let lastInput = result.charAt(result.length - 1);
+  // result.length > 1 ? result.charAt(result.length - 1) : null;
   if (lastInput in operators) {
     result = result.slice(0, -1);
   }

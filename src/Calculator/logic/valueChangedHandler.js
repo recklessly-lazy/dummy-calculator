@@ -5,7 +5,7 @@ const valueChangedHandler = (oldValue, input) => {
   let disabled = false;
   const previousInput = oldValue.charAt(oldValue.length - 1);
   const inputBeforePreviousInput = oldValue.charAt(oldValue.length - 2);
-  if (newValue === "Infinity" || newValue === "NaN") {
+  if (newValue === "Infinity" || newValue === "Indeterminate") {
     newValue = input;
     disabled = false;
   } else if (input === "0" && oldValue === "0") {

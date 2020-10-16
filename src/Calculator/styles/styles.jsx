@@ -104,6 +104,7 @@ export const useStyles = makeStyles((theme) => ({
     width: "32px",
     "&:hover": {
       fill: "red",
+      filter: 'drop-shadow(0px 0px 4px red)',
     },
   },
 }));

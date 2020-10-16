@@ -1,11 +1,19 @@
-import React from 'react'
-import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu'
-import { useStyles } from '../styles/styles'
+import React from "react";
+import {
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  FormControlLabel,
+  Switch,
+} from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
+import { useStyles } from "../styles/styles";
 
 const ToolBar = () => {
-    const classes = useStyles()
-    return (
+  const classes = useStyles();
+  return (
+    <div style={{ flexGrow: "1" }}>
       <AppBar className={classes.appBar} position="static">
         <Toolbar>
           <IconButton
@@ -17,9 +25,22 @@ const ToolBar = () => {
           >
             <MenuIcon titleAccess={"Menu"} />
           </IconButton>
-          <Typography variant={"h6"}>Calculator</Typography>
+          <Typography style={{ flexGrow: "1" }} variant={"h6"}>
+            Calculator
+          </Typography>
+          <FormControlLabel
+            control={
+              <Switch
+                // checked={state.checkedA}
+                // onChange={handleChange}
+                name="checkedB"
+              />
+            }
+            label="Dark"
+          />
         </Toolbar>
       </AppBar>
-    );
-}
-export default ToolBar
+    </div>
+  );
+};
+export default ToolBar;
