@@ -11,33 +11,45 @@ import OperatorButtons from "../Components/OperatorButtons";
 import Display from "../Components/Display";
 import ToolBar from "../Components/Toolbar";
 
-const numberKeys = "1234567890".split("");
+const numberKeys = "1234567890";
 const operatorKeys = "+-*/=";
 
 const Calculator = memo(() => {
-
   const [result, setResult] = useState("0");
   const [disabled, setDisabled] = useState(false);
-  
-  const handleKeyDown = useCallback((event) => {
-    const input = event.key;
-    if (numberKeys.includes(input)) {
-      console.log("Number pressed: ", input);
-      valueChangedHandler(result, input);
-    } else if (operatorKeys.includes(input)) {
-      operationsHandler(result, input)
-      console.log("Operation: ", input);
-    } else if (input === 'Enter') {
-      evaluate(result)
-    }
-  },[result]) 
+  const onBackSpace = useCallback(() => {
+    setResult(result.length === 1 ? "0" : result.slice(0, -1));
+  },[result])
+
+  const handleKeyDown = useCallback(
+    (event) => {
+      const input = event.key;
+      if (numberKeys.includes(input)) {
+        event.preventDefault();
+        console.log("Number pressed: ", input);
+        valueChangedHandler(result, input);
+      } else if (operatorKeys.includes(input) || input === "Backspace") {
+        event.preventDefault();
+        if (input === "Backspace") {
+          onBackSpace()
+        } else {
+          operationsHandler(result, input);
+        }
+        console.log("Operation: ", input);
+      } else if (input === "Enter") {
+        event.preventDefault();
+        evaluate(result);
+      }
+    },
+    [result, onBackSpace]
+  );
   useEffect(() => {
     console.log("Mounted the App!");
     window.addEventListener("keydown", handleKeyDown);
-    return (() => {
-      console.log('Removed !')
+    return () => {
+      console.log("Removed !");
       window.removeEventListener("keydown", handleKeyDown);
-    })
+    };
   }, [result, handleKeyDown]);
 
   const valueChangedHandler = (oldValue, input) => {
@@ -90,7 +102,7 @@ const Calculator = memo(() => {
             disabled={disabled}
             className={classes.functionButtons}
             onClick={() => {
-              setResult(result.length === 1 ? "0" : result.slice(0, -1));
+              onBackSpace();
             }}
           >
             <ArrowBackIcon></ArrowBackIcon>

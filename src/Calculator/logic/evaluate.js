@@ -7,7 +7,7 @@ const evaluate = (result) => {
   if (lastInput in operators) {
     result = result.slice(0, -1);
   }
-  let output = eval(result).toString();
+  let output = eval(result).toFixed(3).toString();
   if (output === "Infinity" || output === "NaN") {
     disabled = true;
     output = (output === 'NaN' ? 'Indeterminate' : output)
