@@ -57,7 +57,11 @@ const Calculator = memo(() => {
     setDisabled(disabled);
     setResult(newResult);
   };
-
+  // const valueChangedHandler = (oldValue, input) => {
+  //   const [newResult, disabled] = inputHandling(oldValue, input);
+  //   setDisabled(disabled);
+  //   setResult(newResult);
+  // };
   const operationsHandler = (result, operation) => {
     const newResult = operationHandling(result, operation);
     setResult(newResult);
